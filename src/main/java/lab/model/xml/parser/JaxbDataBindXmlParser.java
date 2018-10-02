@@ -49,4 +49,10 @@ public class JaxbDataBindXmlParser implements EntityXmlParser<Catalog> {
             return null;
         }
     }
+
+    @Override
+    public Catalog parseXmlFile(String path) {
+        File file = new File(path);
+        return parseXmlFile(file);
+    }
 }

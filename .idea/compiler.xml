@@ -9,5 +9,8 @@
         <module name="xml_json_task" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="xml_json_task" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

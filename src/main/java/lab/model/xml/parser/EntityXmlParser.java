@@ -9,4 +9,5 @@ public interface EntityXmlParser<T> {
     boolean createXmlFile(T entity, File file);
     boolean createXmlFile(T entity, String path);
     T parseXmlFile(File file);
+    T parseXmlFile(String path);
 }
