@@ -1,25 +1,40 @@
 package lab.model.xml.entity;
 
+import javax.xml.bind.annotation.*;
+
+@XmlType(propOrder = {"name", "address", "cash", "education"})
 public class Person {
+    private int id;
     private String name;
     private String address;
-    private Integer cash;
+    private int cash;
     private String education;
 
     public Person() {
     }
 
-    public Person(String name, String address, Integer cash, String education) {
+    public Person(int id, String name, String address, int cash, String education) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.cash = cash;
         this.education = education;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    @XmlAttribute
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
+    @XmlElement
     public void setName(String name) {
         this.name = name;
     }
@@ -28,15 +43,17 @@ public class Person {
         return address;
     }
 
+    @XmlElement
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public Integer getCash() {
+    public int getCash() {
         return cash;
     }
 
-    public void setCash(Integer cash) {
+    @XmlElement
+    public void setCash(int cash) {
         this.cash = cash;
     }
 
@@ -44,6 +61,7 @@ public class Person {
         return education;
     }
 
+    @XmlElement
     public void setEducation(String education) {
         this.education = education;
     }
