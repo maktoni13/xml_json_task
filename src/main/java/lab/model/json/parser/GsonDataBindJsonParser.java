@@ -41,4 +41,19 @@ public class GsonDataBindJsonParser implements EntityJsonParser<CurrencyCatalog>
         Gson gson = new Gson();
         return gson.fromJson(json, CurrencyCatalog.class);
     }
+
+    @Override
+    public CurrencyCatalog parseJson(URL url) {
+        return null;
+    }
+
+    @Override
+    public CurrencyCatalog parseJson(File file) {
+        return null;
+    }
+
+    @Override
+    public CurrencyCatalog parseJson(String path) {
+        return null;
+    }
 }

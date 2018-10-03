@@ -10,8 +10,11 @@ public interface EntityJsonParser<T> {
 
     boolean createJsonFile(T entity, File file);
     boolean createJsonFile(T entity, String path);
+    T parseJson(java.net.URL url);
+    T parseJson(File file);
+    T parseJson(String path);
+    T parseJsonString(String json);
     T parseJsonFile(File file);
     T parseJsonFile(String path);
     T parseJsonUrl(URL url);
-    T parseJsonString(String json);
 }

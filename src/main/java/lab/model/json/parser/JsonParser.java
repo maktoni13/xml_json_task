@@ -11,4 +11,7 @@ public class JsonParser {
     public static void parseJSON() throws IOException {
         String json = new URL(FINANCE_INFO_URL).toString();
     }
+
+    public static void main(String[] args) throws IOException{
+    }
 }

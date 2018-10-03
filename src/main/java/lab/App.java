@@ -12,7 +12,12 @@ import lab.model.xml.parser.EntityXmlParser;
 import lab.model.xml.parser.JDomTreeModelXmlParser;
 import lab.model.xml.parser.JaxbDataBindXmlParser;
 
+import javax.xml.transform.stream.StreamResult;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 /**
@@ -23,6 +28,21 @@ public class App {
     private static final String FILE_XML_LOCATION = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json";
 
     public static void main(String[] args) throws IOException {
+
+        String json = new URL(FINANCE_INFO_URL).toString();
+        URLConnection con = new URL(FINANCE_INFO_URL).openConnection();
+        con.setDoOutput(false);
+        con.setDoInput(true);
+        con.connect();
+        BufferedReader br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while((inputLine = br.readLine()) != null){
+            response.append(inputLine);
+        }
+
+        int a = 1;
+
 
         //EntityXmlParser entityXmlParser = new JDomTreeModelXmlParser();
 
@@ -47,14 +67,14 @@ public class App {
         //        EntityXmlParser<Catalog> entityXmlParser = new JDomTreeModelXmlParser();
         //        entityXmlParser.parseXmlFile("c:\\temp\\test.xml");
 //        String json = "[{\"r030\":36,\"txt\":\"Австралійський долар\",\"rate\":20.375627,\"cc\":\"AUD\",\"exchangedate\":\"02.10.2018\"}]";
-        String json = "{\"rates\":[{\"r030\":36,\"txt\":\"Австралійський долар\",\"rate\":20.375627,\"cc\":\"AUD\",\"exchangedate\":\"02.10.2018\"}" +
-                ",{\"r030\":124,\"txt\":\"Канадський долар\",\"rate\":22.024371,\"cc\":\"CAD\",\"exchangedate\":\"02.10.2018\"}]}";
-        EntityJsonParser<CurrencyCatalog> entityJsonParser = new GsonJsonParser();
-//        EntityJsonParser<CurrencyCatalog> entityJsonParser = new GsonTreeModelJsonParser();
-
-
-        CurrencyCatalog currencyRateList = (CurrencyCatalog) entityJsonParser.parseJsonString(json);
-        int a = 1;
+//        String json = "{\"rates\":[{\"r030\":36,\"txt\":\"Австралійський долар\",\"rate\":20.375627,\"cc\":\"AUD\",\"exchangedate\":\"02.10.2018\"}" +
+//                ",{\"r030\":124,\"txt\":\"Канадський долар\",\"rate\":22.024371,\"cc\":\"CAD\",\"exchangedate\":\"02.10.2018\"}]}";
+//        EntityJsonParser<CurrencyCatalog> entityJsonParser = new GsonJsonParser();
+////        EntityJsonParser<CurrencyCatalog> entityJsonParser = new GsonTreeModelJsonParser();
+//
+//
+//        CurrencyCatalog currencyRateList = (CurrencyCatalog) entityJsonParser.parseJsonString(json);
+//        int a = 1;
 
     }
 }
